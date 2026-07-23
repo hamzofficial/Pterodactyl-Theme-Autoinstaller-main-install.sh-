@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ PT. Maju Jaya - Solusi Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0533 25%, #0d1b2a 50%, #1a0533 75%, #0a0a0a 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(102, 126, 234, 0.6);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; width: 6px; height: 6px; }
+        .particle:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-duration: 10s; animation-delay: 4s; width: 8px; height: 8px; background: rgba(240, 147, 251, 0.5); }
+        .particle:nth-child(4) { left: 40%; animation-duration: 14s; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 3s; width: 5px; height: 5px; background: rgba(245, 87, 108, 0.5); }
+        .particle:nth-child(6) { left: 60%; animation-duration: 16s; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: 2s; width: 7px; height: 7px; background: rgba(102, 126, 234, 0.4); }
+        .particle:nth-child(8) { left: 80%; animation-duration: 9s; animation-delay: 4s; }
+        .particle:nth-child(9) { left: 90%; animation-duration: 17s; animation-delay: 1s; width: 6px; height: 6px; background: rgba(240, 147, 251, 0.4); }
+        .particle:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 3s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* Neon Glow Lines */
+        .glow-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .glow-line {
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1), transparent);
+            animation: glowPulse 8s ease-in-out infinite;
+        }
+
+        .glow-line:nth-child(1) { left: 15%; animation-delay: 0s; }
+        .glow-line:nth-child(2) { left: 35%; animation-delay: 2s; }
+        .glow-line:nth-child(3) { left: 55%; animation-delay: 4s; }
+        .glow-line:nth-child(4) { left: 75%; animation-delay: 6s; }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.2; transform: scaleY(0.8); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            cursor: pointer;
+            text-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .navbar .logo span {
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(102, 126, 234, 0.2);
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.1);
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(240, 147, 251, 0.3));
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-align: center;
+            text-shadow: 0 0 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* ==================== HOME PAGE ==================== */
+        .welcome-section {
+            text-align: center;
+        }
+
+        .welcome-section .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #667eea, #f093fb) border-box;
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) padding-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            box-shadow: 0 0 60px rgba(102, 126, 234, 0.3);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.3); }
+            50% { box-shadow: 0 0 80px rgba(102, 126, 234, 0.6); }
+        }
+
+        .welcome-section h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #667eea, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-weight: 900;
+            text-shadow: 0 0 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .welcome-section .company-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(240, 147, 251, 0.3));
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .welcome-section .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+
+        /* ===== BANNER ===== */
+        .welcome-banner {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            position: relative;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            min-height: 200px;
+            background: linear-gradient(135deg, #1a0533, #0d1b2a);
+        }
+
+        .welcome-banner img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .welcome-banner .banner-fallback {
+            display: none;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .welcome-banner .banner-fallback .fallback-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .welcome-banner .banner-fallback h3 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-banner .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 40px 30px 25px;
+            color: white;
+            text-align: left;
+        }
+
+        .welcome-banner .banner-overlay h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-banner .banner-overlay p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg) translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            transform: rotate(45deg) translateX(100%);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.95);
+        }
+
+        /* ==================== PRODUCTS PAGE ==================== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            overflow: visible;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border-color: rgba(102, 126, 234, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .product-card .image-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            width: 100%;
+            padding-top: 65%;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .product-card .image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+        }
+
+        .product-card:hover .image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .product-card .category-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.3);
+            z-index: 2;
+        }
+
+        .product-card h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .product-card .description {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+
+        .product-card .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+
+        .btn-buy {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.3);
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(245, 87, 108, 0.5);
+        }
+
+        /* ==================== SERVICES PAGE ==================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .service-card .icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+        }
+
+        .service-card .service-tag {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(240, 147, 251, 0.2));
+            border-radius: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        /* ==================== CONTACT PAGE ==================== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-info .info-item .icon {
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(240, 147, 251, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .contact-info .info-item strong {
+            color: white;
+        }
+
+        .contact-info .info-item p {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 2000;
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.98);
+                padding: 20px;
+                gap: 10px;
+                border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-banner img {
+                height: 200px;
+            }
+
+            .welcome-banner .banner-overlay h3 {
+                font-size: 1.2rem;
+            }
+
+            .welcome-banner .banner-overlay p {
+                font-size: 0.9rem;
+            }
+
+            .welcome-banner .banner-overlay {
+                padding: 25px 20px 15px;
+            }
+
+            .product-card .image-wrapper {
+                padding-top: 60%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo {
+                font-size: 1.3rem;
+            }
+
+            .section {
+                padding: 20px 15px;
+            }
+
+            .welcome-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .product-card .image-wrapper {
+                padding-top: 55%;
+            }
+
+            .welcome-banner img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Glow Lines -->
+    <div class="glow-lines">
+        <div class="glow-line"></div>
+        <div class="glow-line"></div>
+        <div class="glow-line"></div>
+        <div class="glow-line"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a class="logo" onclick="navigateTo('home')">PT. Maju <span>Jaya</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a class="active" onclick="navigateTo('home')">🏠 Beranda</a></li>
+            <li><a onclick="navigateTo('services')">💼 Layanan</a></li>
+            <li><a onclick="navigateTo('products')">📦 Produk</a></li>
+            <li><a onclick="navigateTo('contact')">📬 Kontak</a></li>
+        </ul>
+        <div class="nav-toggle" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- ==================== HOME PAGE ==================== -->
+        <div class="page active" id="page-home">
+            <section class="section">
+                <div class="welcome-section">
+                    <div class="profile-wrapper">
+                        <img src="https://via.placeholder.com/150x150/667eea/FFFFFF?text=Company" alt="Company Logo" class="profile-img">
+                    </div>
+                    <span class="company-tag">🏢 Perusahaan Terpercaya</span>
+                    <h1>🌟 PT. Maju Jaya</h1>
+                    <p class="subtitle">
+                        Solusi bisnis terpercaya dengan <strong style="color: #667eea;">produk berkualitas</strong> dan 
+                        <strong style="color: #f093fb;">layanan profesional</strong> untuk mendukung kesuksesan Anda.
+                    </p>
+                    <p class="subtitle" style="font-size: 0.95rem; color: rgba(255,255,255,0.4);">
+                        ⭐ 500+ Klien Puas • 🏆 10 Tahun Berpengalaman
+                    </p>
+                    
+                    <div class="welcome-banner">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&h=400&fit=crop" alt="Banner" loading="lazy" onerror="this.style.display='none'; document.getElementById('bannerFallback').style.display='block';">
+                        <div class="banner-fallback" id="bannerFallback">
+                            <div class="fallback-icon">🏢</div>
+                            <h3>PT. Maju Jaya</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin-top: 10px;">✨ Solusi Digital Terpercaya</p>
+                        </div>
+                        <div class="banner-overlay">
+                            <h3>🏢 PT. Maju Jaya</h3>
+                            <p>✨ Solusi Digital Terpercaya untuk Masa Depan Anda</p>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" onclick="navigateTo('products')">
+                        🚀 Lihat Produk & Jasa
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== SERVICES PAGE ==================== -->
+        <div class="page" id="page-services">
+            <section class="section">
+                <h2 class="section-title">💼 Layanan Kami</h2>
+                <p class="section-subtitle">Layanan profesional untuk kebutuhan digital Anda</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="icon">💻</span>
+                        <h3>Pengembangan Website</h3>
+                        <p>Pembuatan website profesional, responsif, dan modern untuk bisnis Anda. Dilengkapi dengan fitur lengkap dan keamanan terbaik.</p>
+                        <span class="service-tag">✨ Mulai dari Rp 2.500.000</span>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon">📱</span>
+                        <h3>Service WhatsApp</h3>
+                        <p>Layanan pembuatan dan pengelolaan akun WhatsApp Business, bot otomatis, dan integrasi sistem untuk bisnis Anda.</p>
+                        <span class="service-tag">✨ Mulai dari Rp 500.000</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== PRODUCTS PAGE ==================== -->
+        <div class="page" id="page-products">
+            <section class="section">
+                <h2 class="section-title">📦 Produk Digital</h2>
+                <p class="section-subtitle">Pilih produk digital berkualitas untuk kebutuhan Anda</p>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be inserted here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== CONTACT PAGE ==================== -->
+        <div class="page" id="page-contact">
+            <section class="section">
+                <h2 class="section-title">📬 Hubungi Kami</h2>
+                <p class="section-subtitle">Kami siap membantu Anda, silakan hubungi kami</p>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="icon">📍</div>
+                            <div>
+                                <strong>Alamat</strong>
+                                <p>Jl. Sudirman No. 123, Jakarta</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">📱</div>
+                            <div>
+                                <strong>Telepon</strong>
+                                <p>+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">✉️</div>
+                            <div>
+                                <strong>Email</strong>
+                                <p>info@majujaya.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">🕐</div>
+                            <div>
+                                <strong>Jam Operasional</strong>
+                                <p>Senin - Jumat: 08:00 - 17:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" onsubmit="handleContact(event)">
+                        <input type="text" placeholder="Nama Lengkap" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="text" placeholder="Subjek">
+                        <textarea placeholder="Pesan Anda..." required></textarea>
+                        <button type="submit" class="btn-submit">Kirim Pesan ✉️</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div id="toastMessage">✅ Pesan berhasil dikirim!</div>
+    </div>
+
+    <script>
+        // ============================================================
+        // DATA PRODUK - GAMBAR SUDAH DIPERBAIKI
+        // ============================================================
+        const products = [
+            {
+                id: 1,
+                name: "Account Telegram Polosan",
+                category: "Account",
+                price: "Rp 50.000",
+                image: "https://img.icons8.com/fluency/400/telegram-app.png",
+                description: "Account Telegram baru dengan nomor aktif, siap pakai untuk kebutuhan Anda."
+            },
+            {
+                id: 2,
+                name: "Account Telegram FAKE",
+                category: "Account",
+                price: "Rp 75.000",
+                image: "https://img.icons8.com/fluency/400/incognito.png",
+                description: "Account Telegram dengan data identitas FAKE (nama, nomor, foto) untuk kebutuhan anonim."
+            },
+            {
+                id: 3,
+                name: "Account Telegram SCAM",
+                category: "Account",
+                price: "Rp 100.000",
+                image: "https://img.icons8.com/fluency/400/megaphone.png",
+                description: "Account Telegram yang sudah terverifikasi dengan riwayat aktif untuk kebutuhan khusus."
+            },
+            {
+                id: 4,
+                name: "Pengajaran FAKE/SCAM Account",
+                category: "Jasa",
+                price: "Rp 200.000",
+                image: "https://files.catbox.moe/v3jp2p.png",
+                description: "Panduan lengkap cara membuat dan mengelola FAKE/SCAM account Telegram dengan aman."
+            },
+            {
+                id: 5,
+                name: "Channel FAKE",
+                category: "Channel",
+                price: "Rp 150.000",
+                image: "https://files.catbox.moe/v3jp2p.png",
+                description: "Channel Telegram dengan konten dan member FAKE untuk kebutuhan promosi atau testing."
+            },
+            {
+                id: 6,
+                name: "Channel SCAM",
+                category: "Channel",
+                price: "Rp 200.000",
+                image: "https://files.catbox.moe/v3jp2p.png",
+                description: "Channel Telegram premium dengan member aktif dan konten berkualitas untuk kebutuhan spesifik."
+            }
+        ];
+
+        // ============================================================
+        // FUNCTIONS
+        // ============================================================
+
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(`page-${page}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const pageMap = {
+                'home': 0,
+                'services': 1,
+                'products': 2,
+                'contact': 3
+            };
+
+            if (pageMap[page] !== undefined) {
+                navLinks[pageMap[page]].classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map((product, index) => `
+                <div class="product-card" style="animation: fadeInUp 0.5s ease ${index * 0.08}s both;">
+                    <div class="image-wrapper">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <span class="category-tag">${product.category}</span>
+                    </div>
+                    <h3>${product.name}</h3>
+                    <p class="description">${product.description}</p>
+                    <div class="price">${product.price}</div>
+                    <button class="btn-buy" onclick="buyProduct(${product.id})">
+                        🛒 Beli Sekarang
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function buyProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const message = `Halo, saya ingin membeli ${product.name} dengan harga ${product.price}. Apakah masih tersedia?`;
+            const encodedMessage = encodeURIComponent(message);
+            
+            const phoneNumber = '6281234567890';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            showToast(`📤 Pesan untuk "${product.name}" terkirim!`);
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            showToast('✅ Pesan Anda berhasil dikirim! Kami akan segera menghubungi Anda.');
+            e.target.reset();
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        renderProducts();
+        navigateTo('home');
+    </script>
+</body>
+</html>
